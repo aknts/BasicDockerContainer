@@ -1,14 +1,13 @@
 #!/bin/bash
-LOG_PATH=$appmodule/logs
 if [ ! -d $appmodule ]; then
 	git clone https://github.com/aknts/$appmodule
 	mkdir $appmodule/logs
-	npm install mqtt
-	echo $appmodule installed
+	npm install
+	cat >> config.js << EOL
+		var config = $appconfig;
+		module.exports = config;
+		EOL
+	touch "logs/$appmodule_$(date +%Y-%m-%d.%H:%M:%S).out"
+	touch "logs/$appmodule_$(date +%Y-%m-%d.%H:%M:%S).err"
+	exec $1 $appmodule/$2
 fi
-fileout="$LOG_PATH/$COMPONENT_$(date +%Y-%m-%d.%H:%M:%S).out"
-fileerr="$LOG_PATH/$COMPONENT_$(date +%Y-%m-%d.%H:%M:%S).err"
-echo $fileout
-echo $fileerr
-echo $appmodule
-exec $1 $appmodule/$2

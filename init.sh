@@ -6,7 +6,7 @@ if [ ! -d $appmodule ]; then
 	cat >> config.js << EOL
 		var config = $appconfig;
 		module.exports = config;
-		EOL
+EOL
 	touch "logs/$appmodule_$(date +%Y-%m-%d.%H:%M:%S).out"
 	touch "logs/$appmodule_$(date +%Y-%m-%d.%H:%M:%S).err"
 	exec $1 $appmodule/$2

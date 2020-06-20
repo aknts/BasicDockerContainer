@@ -3,7 +3,7 @@ if [ ! -d $appmodule ]; then
 	git clone https://github.com/aknts/$appmodule
 	mkdir $appmodule/logs
 	npm install
-	cat >> config.js << EOL
+	cat > config.js << EOL
 		var config = $appconfig;
 		module.exports = config;
 EOL

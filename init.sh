@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ ! -d $appmodule ]; then
-        
+        appmodule=`echo $appmodule | base64 --decode`
         git clone $appmodule
         cd $appmodule
         mkdir logs

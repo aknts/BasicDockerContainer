@@ -1,7 +1,8 @@
 #!/bin/bash
 
 if [ ! -d $appmodule ]; then
-        git clone https://github.com/aknts/$appmodule
+        //git clone https://github.com/aknts/$appmodule
+        git clone $appmodule
         cd $appmodule
         mkdir logs
         touch logs/$appmodule_$(date +%Y-%m-%d.%H:%M:%S).out
